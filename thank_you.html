@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Thank You | Fuiox</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#00b960;
+--cream:#fffdf6;
+--dark:#111827;
+--muted:#667085;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:
+radial-gradient(circle at top right,
+rgba(0,185,96,.08),
+transparent 40%),
+var(--cream);
+
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow-y:auto;
+overflow-x: hidden;
+padding:30px;
+}
+
+
+/* ===========================
+Floating Background Shapes
+=========================== */
+
+.bg-shape{
+position:absolute;
+border-radius:50%;
+filter:blur(70px);
+opacity:.18;
+animation:floatBlob 12s infinite ease-in-out;
+}
+
+.shape1{
+width:300px;
+height:300px;
+background:var(--primary);
+top:-100px;
+left:-80px;
+}
+
+.shape2{
+width:240px;
+height:240px;
+background:#7ff0b2;
+right:-80px;
+bottom:-60px;
+animation-delay:2s;
+}
+
+@keyframes floatBlob{
+50%{
+transform:
+translateY(-30px)
+scale(1.12);
+}
+}
+
+
+
+/* ===========================
+Main Card
+=========================== */
+
+.success-wrapper{
+position:relative;
+max-width:880px;
+width:100%;
+}
+
+.success-card{
+
+background:
+rgba(255,255,255,.78);
+
+backdrop-filter:blur(22px);
+
+border:1px solid rgba(0,185,96,.12);
+
+box-shadow:
+0 30px 100px rgba(0,0,0,.08);
+
+border-radius:36px;
+
+padding:70px 55px;
+
+text-align:center;
+
+animation:
+cardRise 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes cardRise{
+from{
+opacity:0;
+transform:
+translateY(80px)
+scale(.9);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+
+
+/* ===========================
+Success Icon
+=========================== */
+
+.success-ring{
+width:150px;
+height:150px;
+margin:auto auto 40px;
+position:relative;
+}
+
+.ring{
+position:absolute;
+inset:0;
+border-radius:50%;
+border:3px solid rgba(0,185,96,.18);
+animation:ringPulse 2.5s infinite;
+}
+
+.ring:nth-child(2){
+animation-delay:.7s;
+}
+
+@keyframes ringPulse{
+from{
+transform:scale(.8);
+opacity:1;
+}
+to{
+transform:scale(1.5);
+opacity:0;
+}
+}
+
+.check-circle{
+position:absolute;
+inset:18px;
+background:var(--primary);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+
+animation:popIn .9s ease forwards;
+}
+
+@keyframes popIn{
+from{
+transform:scale(.2) rotate(-180deg);
+opacity:0;
+}
+to{
+transform:scale(1) rotate(0);
+opacity:1;
+}
+}
+
+.check{
+width:34px;
+height:18px;
+border-left:6px solid white;
+border-bottom:6px solid white;
+transform:rotate(-45deg);
+}
+
+
+
+/* ===========================
+Text
+=========================== */
+
+.badge{
+display:inline-block;
+background:rgba(0,185,96,.08);
+color:var(--primary);
+padding:12px 22px;
+border-radius:999px;
+font-weight:700;
+margin-bottom:28px;
+animation:fadeUp 1s .2s both;
+}
+
+h1{
+font-size:clamp(42px,7vw,70px);
+line-height:1.05;
+font-weight:800;
+color:var(--dark);
+margin-bottom:22px;
+letter-spacing:-2px;
+
+animation:fadeUp 1s .4s both;
+}
+
+.highlight{
+color:var(--primary);
+}
+
+p{
+max-width:650px;
+margin:auto;
+font-size:20px;
+line-height:1.8;
+color:var(--muted);
+
+animation:fadeUp 1s .6s both;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(45px);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+
+
+/* ===========================
+Info box
+=========================== */
+
+.info-box{
+margin-top:45px;
+padding:28px;
+border-radius:24px;
+background:#fbfffc;
+border:1px solid rgba(0,185,96,.1);
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+
+animation:fadeUp 1s .8s both;
+}
+
+.info-box h4{
+color:var(--dark);
+margin-bottom:10px;
+}
+
+.info-box span{
+color:var(--muted);
+}
+
+
+
+/* ===========================
+Buttons
+=========================== */
+
+.actions{
+margin-top:45px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+
+animation:fadeUp 1s 1s both;
+}
+
+.btn{
+padding:18px 34px;
+border-radius:18px;
+font-weight:700;
+text-decoration:none;
+transition:.35s ease;
+}
+
+.btn-primary{
+background:var(--primary);
+color:#fff;
+box-shadow:
+0 12px 35px rgba(0,185,96,.28);
+}
+
+.btn-primary:hover{
+transform:translateY(-6px);
+}
+
+.btn-outline{
+border:2px solid var(--primary);
+color:var(--primary);
+}
+
+.btn-outline:hover{
+background:var(--primary);
+color:#fff;
+}
+
+
+
+/* ===========================
+Footer note
+=========================== */
+
+.small-note{
+margin-top:35px;
+font-size:14px;
+opacity:.65;
+animation:fadeUp 1s 1.2s both;
+}
+
+
+
+/* responsive */
+@media(max-width:768px){
+
+.success-card{
+padding:50px 30px;
+border-radius:28px;
+}
+
+p{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
+
+
+<div class="success-wrapper">
+
+<div class="success-card">
+
+<div class="success-ring">
+<div class="ring"></div>
+<div class="ring"></div>
+
+<div class="check-circle">
+<div class="check"></div>
+</div>
+</div>
+
+<div class="badge">
+✔ Form Submitted Successfully
+</div>
+
+<h1>
+Thank You for
+<span class="highlight">Contacting Fuiox</span>
+</h1>
+
+<p>
+We’ve received your inquiry successfully.
+Our team will review your request and get back
+to you within 24 hours with the next steps.
+</p>
+
+
+<div class="info-box">
+
+<div>
+<h4>Response Time</h4>
+<span>Within 24 Hours</span>
+</div>
+
+<div>
+<h4>Consultation</h4>
+<span>Strategy Call Scheduled</span>
+</div>
+
+<div>
+<h4>Support</h4>
+<span>Dedicated Expert Follow-up</span>
+</div>
+
+</div>
+
+
+<div class="actions">
+<a href="index.html" class="btn btn-primary">
+Back To Home
+</a>
+
+<a href="#" class="btn btn-outline">
+View Our Services
+</a>
+</div>
+
+
+<div class="small-note">
+Trusted by enterprise clients worldwide • Fuiox Technologies
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
