@@ -7,13 +7,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
 :root{
 --primary:#00b960;
---primary-dark:#009a50;
+--primary-dark:#00984f;
 --cream:#fffdf6;
---text:#1e293b;
+--text:#14213d;
 --muted:#64748b;
 }
 
@@ -24,79 +26,68 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Inter',sans-serif;
-min-height:100vh;
+font-family:Inter,sans-serif;
 background:
-radial-gradient(circle at 20% 20%, rgba(0,185,96,.08), transparent 35%),
-radial-gradient(circle at 80% 30%, rgba(0,185,96,.06), transparent 40%),
-linear-gradient(135deg,var(--cream),#ffffff);
-display:flex;
-align-items:center;
-justify-content:center;
+radial-gradient(circle at 20% 20%,rgba(0,185,96,.08),transparent 35%),
+radial-gradient(circle at 85% 30%,rgba(0,185,96,.06),transparent 35%),
+linear-gradient(135deg,#fffdf6,#ffffff);
 overflow-x:hidden;
-padding:30px;
 }
 
 
-/* =========================
-floating background shapes
-========================= */
 
+/* floating glow */
 .bg-shape{
 position:fixed;
 border-radius:50%;
-filter:blur(70px);
+filter:blur(90px);
 z-index:0;
-animation:floatBlob 10s ease-in-out infinite;
+pointer-events:none;
+animation:blobFloat 10s ease-in-out infinite;
 }
 
 .shape1{
-width:280px;
-height:280px;
-background:rgba(0,185,96,.08);
-top:-80px;
-left:-80px;
+width:320px;
+height:320px;
+background:rgba(0,185,96,.09);
+top:-100px;
+left:-100px;
 }
 
 .shape2{
-width:240px;
-height:240px;
+width:260px;
+height:260px;
 background:rgba(0,185,96,.06);
-bottom:-70px;
-right:-60px;
+right:-70px;
+bottom:-60px;
 animation-delay:2s;
 }
 
-@keyframes floatBlob{
+@keyframes blobFloat{
 50%{
 transform:
-translateY(-20px)
+translateY(-30px)
 scale(1.12);
 }
 }
 
 
 
-/* =========================
-card
-========================= */
-
-.success-wrapper{
+/* card */
+.success-card{
 position:relative;
 z-index:2;
-width:100%;
-max-width:760px;
-}
 
-.success-card{
 background:rgba(255,255,255,.92);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,.7);
+border:1px solid rgba(255,255,255,.75);
 
 border-radius:34px;
-padding:70px 60px;
-text-align:center;
+
+padding:
+clamp(38px,6vw,72px)
+clamp(26px,5vw,60px);
 
 box-shadow:
 0 30px 100px rgba(0,0,0,.08);
@@ -109,7 +100,7 @@ from{
 opacity:0;
 transform:
 translateY(70px)
-scale(.92);
+scale(.94);
 }
 to{
 opacity:1;
@@ -119,22 +110,18 @@ transform:none;
 
 
 
-/* =========================
-Success Tick
-========================= */
-
+/* success tick */
 .success-icon{
-margin:auto auto 35px;
-width:130px;
-height:130px;
-position:relative;
-animation:popIn 1s ease;
+width:120px;
+height:120px;
+margin:auto auto 30px;
+animation:popIn .9s ease;
 }
 
 @keyframes popIn{
 0%{
-transform:scale(.3);
 opacity:0;
+transform:scale(.3);
 }
 80%{
 transform:scale(1.08);
@@ -146,9 +133,8 @@ opacity:1;
 }
 
 .check-svg{
-width:130px;
-height:130px;
-transform:rotate(-8deg);
+width:120px;
+height:120px;
 }
 
 .circle{
@@ -158,58 +144,50 @@ stroke-width:6;
 stroke-linecap:round;
 stroke-dasharray:400;
 stroke-dashoffset:400;
-animation:drawCircle 1.2s ease forwards;
+animation:drawCircle 1s forwards;
 }
 
 .check{
 fill:none;
-stroke:#00b960;
+stroke:var(--primary);
 stroke-width:7;
 stroke-linecap:round;
 stroke-linejoin:round;
-stroke-dasharray:80;
-stroke-dashoffset:80;
-animation:
-drawCheck .7s ease forwards 1s;
+stroke-dasharray:90;
+stroke-dashoffset:90;
+animation:drawCheck .7s 1s forwards;
 }
 
 @keyframes drawCircle{
-to{
-stroke-dashoffset:0;
-}
+to{stroke-dashoffset:0;}
 }
 
 @keyframes drawCheck{
-to{
-stroke-dashoffset:0;
-}
+to{stroke-dashoffset:0;}
 }
 
 
 
-/* =========================
-Text content
-========================= */
-
-.badge{
+/* text */
+.success-badge{
 display:inline-block;
-background:rgba(0,185,96,.1);
+background:rgba(0,185,96,.12);
 color:var(--primary);
-padding:12px 20px;
+padding:12px 22px;
 border-radius:50px;
 font-size:14px;
 font-weight:700;
-margin-bottom:24px;
-animation:fadeUp 1s .4s both;
+margin-bottom:26px;
+animation:fadeUp .8s .3s both;
 }
 
-h1{
-font-size:clamp(2.2rem,6vw,4.3rem);
-line-height:1.08;
+.success-title{
+font-size:clamp(2.2rem,5vw,4rem);
 font-weight:800;
+line-height:1.08;
 color:var(--text);
 margin-bottom:18px;
-animation:fadeUp 1s .6s both;
+animation:fadeUp .8s .5s both;
 }
 
 .highlight{
@@ -217,19 +195,18 @@ color:var(--primary);
 }
 
 .success-text{
-font-size:1.15rem;
+max-width:650px;
+margin:auto;
+font-size:1.08rem;
 line-height:1.8;
 color:var(--muted);
-max-width:620px;
-margin:auto;
-animation:fadeUp 1s .85s both;
+animation:fadeUp .8s .7s both;
 }
-
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(35px);
 }
 to{
 opacity:1;
@@ -239,114 +216,91 @@ transform:none;
 
 
 
-/* =========================
-Info cards
-========================= */
-
-.info-grid{
-margin-top:45px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
-}
-
+/* info boxes */
 .info-box{
 background:#fff;
+padding:28px 24px;
 border-radius:24px;
-padding:28px 22px;
+height:100%;
 box-shadow:0 10px 30px rgba(0,0,0,.04);
 
-animation:fadeUp 1s both;
+transition:.35s ease;
 }
 
-.info-box:nth-child(1){animation-delay:1.1s;}
-.info-box:nth-child(2){animation-delay:1.3s;}
-.info-box:nth-child(3){animation-delay:1.5s;}
+.info-box:hover{
+transform:translateY(-6px);
+box-shadow:0 18px 45px rgba(0,185,96,.08);
+}
 
 .info-box h4{
-font-size:16px;
-margin-bottom:10px;
+font-size:18px;
+font-weight:700;
+margin-bottom:12px;
 color:var(--text);
 }
 
 .info-box p{
-font-size:14px;
-line-height:1.6;
+margin:0;
+font-size:15px;
+line-height:1.7;
 color:var(--muted);
 }
 
 
 
-/* =========================
-Buttons
-========================= */
-
-.actions{
-margin-top:42px;
-display:flex;
-gap:18px;
-justify-content:center;
-flex-wrap:wrap;
-animation:fadeUp 1s 1.6s both;
-}
-
-.btn{
-text-decoration:none;
-padding:16px 32px;
-border-radius:50px;
+/* buttons */
+.btn-premium{
+background:var(--primary);
+border:none;
+color:#fff;
 font-weight:700;
+border-radius:10px;
+/* padding:16px 38px; */
+box-shadow:0 16px 35px rgba(0,185,96,.23);
 transition:.35s ease;
 }
 
-.btn-primary{
-background:var(--primary);
-color:#fff;
-box-shadow:
-0 14px 30px rgba(0,185,96,.25);
-}
-
-.btn-primary:hover{
-transform:translateY(-4px);
+.btn-premium:hover{
 background:var(--primary-dark);
+transform:translateY(-3px);
 }
 
-.btn-outline{
+.btn-outline-premium{
 border:2px solid var(--primary);
 color:var(--primary);
+font-weight:700;
+border-radius:10px;
+/* padding:16px 38px; */
+transition:.35s ease;
 }
 
-.btn-outline:hover{
+.btn-outline-premium:hover{
 background:var(--primary);
 color:#fff;
 }
 
 
 
-/* =========================
-Responsive
-========================= */
-
+/* mobile */
 @media(max-width:768px){
 
 .success-card{
-padding:55px 30px;
-border-radius:26px;
+border-radius:24px;
 }
 
-.info-grid{
-grid-template-columns:1fr;
+.success-icon{
+width:95px;
+height:95px;
+}
+
+.check-svg{
+width:95px;
+height:95px;
 }
 
 .success-text{
 font-size:1rem;
-}
-
-.actions{
-flex-direction:column;
-}
-
-.btn{
-width:100%;
+text-align:center;
 }
 
 }
@@ -358,9 +312,12 @@ width:100%;
 <div class="bg-shape shape1"></div>
 <div class="bg-shape shape2"></div>
 
-<div class="success-wrapper">
+<section class="container min-vh-100 d-flex align-items-center py-5">
 
-<div class="success-card">
+<div class="row justify-content-center w-100">
+<div class="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-7">
+
+<div class="success-card text-center">
 
 <div class="success-icon">
 <svg class="check-svg" viewBox="0 0 120 120">
@@ -369,47 +326,57 @@ width:100%;
 </svg>
 </div>
 
-<div class="badge">
+<div class="success-badge">
 ✓ Form Submitted Successfully
 </div>
 
-<h1>
+<h1 class="success-title">
 Thank You for Choosing
 <span class="highlight">Fuiox</span>
 </h1>
 
-<p class="success-text">
+<p class="success-text mb-5">
 Your inquiry has been successfully submitted.
 Our team has received your request and one of our specialists will reach out shortly.
 </p>
 
 
-<div class="info-grid">
+<div class="row g-4 mb-5">
 
-<div class="info-box">
+<div class="col-12 col-md-4">
+<div class="info-box card">
 <h4>Quick Response</h4>
 <p>Expect a response within 24 business hours.</p>
 </div>
+</div>
 
-<div class="info-box">
+<div class="col-12 col-md-4">
+<div class="info-box card">
 <h4>Expert Review</h4>
 <p>Senior consultants will review your requirements.</p>
 </div>
+</div>
 
-<div class="info-box">
+<div class="col-12 col-md-4">
+<div class="info-box card">
 <h4>Next Steps</h4>
 <p>We'll schedule a discovery discussion with you.</p>
 </div>
+</div>
 
 </div>
 
 
-<div class="actions">
-<a href="/" class="btn btn-primary">
+<div class="row g-3 justify-content-center">
+
+<div class="col-12 col-sm-6 col-md-auto">
+<a href="/" class="btn btn-premium w-100">
 Back to Home
 </a>
+</div>
 
-<a href="#" class="btn btn-outline">
+<div class="col-12 col-sm-6 col-md-auto">
+<a href="#" class="btn btn-outline-premium w-100">
 View Services
 </a>
 </div>
@@ -417,6 +384,13 @@ View Services
 </div>
 
 </div>
+
+</div>
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
